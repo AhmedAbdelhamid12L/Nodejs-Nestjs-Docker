@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  api-server:
+    image: api-server
+    ports: 
+      - "5000:5000" 
+  db: 
+    image: postgres:alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: abcd1234
+      POSTGRES_USER: ahmed
+      POSTGRES_DB: node22
+    volumes:
+      - data01:/var/lib/postgresql/data
+volumes:
+  data01:
+    driver: local
+networks:
+  postgres:
+    driver: bridge
